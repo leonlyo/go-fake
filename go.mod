@@ -1,4 +1,4 @@
-module go-fake
+module github.com/leonlyo/go-fake
 
 go 1.16
 
