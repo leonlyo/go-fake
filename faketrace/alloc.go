@@ -47,19 +47,19 @@ func toHex(v uint64) string {
 	return string(buf[i:])
 }
 
-type fakealloctrace struct {
+type FakeAlloctrace struct {
 	allockPatch *monkey.PatchGuard
 	freePatch   *monkey.PatchGuard
 }
 
-func NewFakeAllocTrace() *fakealloctrace {
-	return &fakealloctrace{
+func NewFakeAllocTrace() *FakeAlloctrace {
+	return &FakeAlloctrace{
 		allockPatch: monkey.Patch(tracealloc, tracealloc2),
 		freePatch:   monkey.Patch(tracefree, tracefree2),
 	}
 }
 
-func (f *fakealloctrace) Destory() {
+func (f *FakeAlloctrace) Destory() {
 	f.allockPatch.Unpatch()
 	f.freePatch.Unpatch()
 }
